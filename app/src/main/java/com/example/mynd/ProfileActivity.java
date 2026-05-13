@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+import android.content.Intent;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -38,6 +39,9 @@ public class ProfileActivity extends AppCompatActivity {
             editor.apply();
 
             Toast.makeText(this, "Profile saved", Toast.LENGTH_SHORT).show();
+
+            Intent intent = new Intent(ProfileActivity.this, MemoryPromptActivity.class);
+            startActivity(intent);
         });
     }
 }

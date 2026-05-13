@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:padding="24dp"
+    android:background="#F7F4EF">
+
+    <TextView
+        android:id="@+id/promptTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Today's Memory Prompt"
+        android:textSize="28sp"
+        android:textStyle="bold"
+        android:textColor="#2F3A35"
+        android:layout_marginBottom="24dp" />
+
+    <TextView
+        android:id="@+id/promptText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Question goes here"
+        android:textSize="24sp"
+        android:textColor="#4F5D55"
+        android:textAlignment="center" />
+
+</LinearLayout>
