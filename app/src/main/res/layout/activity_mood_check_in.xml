@@ -3,49 +3,39 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="24dp"
     android:gravity="center"
+    android:padding="24dp"
     android:background="#F7F4EF">
 
     <TextView
-        android:id="@+id/promptTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Memory Activity"
-        android:textSize="30sp"
-        android:textStyle="bold"
-        android:textColor="#2F3A35"
-        android:layout_marginBottom="24dp" />
-
-    <TextView
-        android:id="@+id/promptText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Question"
-        android:textSize="24sp"
-        android:textColor="#4F5D55"
+        android:text="How are you feeling today?"
+        android:textSize="28sp"
+        android:textStyle="bold"
         android:textAlignment="center"
+        android:textColor="#2F3A35"
         android:layout_marginBottom="32dp" />
 
     <Button
-        android:id="@+id/optionOneButton"
+        android:id="@+id/happyButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Option 1"
+        android:text="😊 Happy"
         android:layout_marginBottom="12dp" />
 
     <Button
-        android:id="@+id/optionTwoButton"
+        android:id="@+id/okayButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Option 2"
+        android:text="😐 Okay"
         android:layout_marginBottom="12dp" />
 
     <Button
-        android:id="@+id/optionThreeButton"
+        android:id="@+id/sadButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Option 3"
+        android:text="😟 Sad"
         android:layout_marginBottom="24dp" />
 
     <TextView
@@ -59,16 +49,9 @@
         android:layout_marginBottom="24dp" />
 
     <Button
-        android:id="@+id/nextQuestionButton"
+        android:id="@+id/continueButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Next Question" />
-
-    <Button
-        android:id="@+id/homeButton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Return to Home"
-        android:layout_marginTop="16dp" />
+        android:text="Continue to Memory Activity" />
 
 </LinearLayout>

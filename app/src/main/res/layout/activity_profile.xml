@@ -13,7 +13,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Profile Setup"
+            android:text="Patient Profile"
             android:textSize="30sp"
             android:textStyle="bold"
             android:textColor="#2F3A35"
@@ -22,7 +22,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Enter meaningful personal details to help Mynd create memory prompts."
+            android:text="Enter basic patient details before adding personalised memory information."
             android:textSize="16sp"
             android:textColor="#4F5D55"
             android:layout_marginBottom="24dp" />
@@ -31,37 +31,26 @@
             android:id="@+id/nameInput"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="User name" />
+            android:hint="Patient name" />
 
         <EditText
-            android:id="@+id/familyInput"
+            android:id="@+id/ageInput"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Family member name" />
+            android:hint="Age"
+            android:inputType="number" />
 
         <EditText
-            android:id="@+id/relationshipInput"
+            android:id="@+id/sexInput"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Relationship e.g. daughter" />
-
-        <EditText
-            android:id="@+id/hobbyInput"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Favourite hobby" />
-
-        <EditText
-            android:id="@+id/teamInput"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Favourite team" />
+            android:hint="Sex" />
 
         <Button
             android:id="@+id/saveProfileButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Save Profile"
+            android:text="Continue to Memory Details"
             android:layout_marginTop="24dp" />
 
     </LinearLayout>

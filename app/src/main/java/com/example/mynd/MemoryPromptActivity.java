@@ -2,25 +2,22 @@ package com.example.mynd;
 
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import org.json.JSONObject;
-
-import java.io.IOException;
-
-import okhttp3.Call;
-import okhttp3.Callback;
-import okhttp3.MediaType;
-import okhttp3.OkHttpClient;
-import okhttp3.Request;
-import okhttp3.RequestBody;
-import okhttp3.Response;
-
 public class MemoryPromptActivity extends AppCompatActivity {
 
     private TextView promptText;
+    private TextView feedbackText;
+
+    private Button optionOneButton;
+    private Button optionTwoButton;
+    private Button optionThreeButton;
+
+    private String correctAnswer;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,94 +25,94 @@ public class MemoryPromptActivity extends AppCompatActivity {
         setContentView(R.layout.activity_memory_prompt);
 
         promptText = findViewById(R.id.promptText);
+        feedbackText = findViewById(R.id.feedbackText);
+
+        optionOneButton = findViewById(R.id.optionOneButton);
+        optionTwoButton = findViewById(R.id.optionTwoButton);
+        optionThreeButton = findViewById(R.id.optionThreeButton);
+
+        Button nextQuestionButton = findViewById(R.id.nextQuestionButton);
+
+        loadQuestion();
+
+        nextQuestionButton.setOnClickListener(v -> {
+            feedbackText.setText("");
+            loadQuestion();
+        });
+
+        Button homeButton = findViewById(R.id.homeButton);
+
+        homeButton.setOnClickListener(v -> {
+            finish();
+        });
+    }
+
+    private void loadQuestion() {
 
         SharedPreferences prefs = getSharedPreferences("MyndProfile", MODE_PRIVATE);
 
-        String familyName = prefs.getString("family", "family");
-        String hobby = prefs.getString("hobby", "gardening");
-        String team = prefs.getString("team", "team");
+        String hobby = prefs.getString("hobby", "Gardening");
+        String team = prefs.getString("team", "Cats");
+        String meal = prefs.getString("meal", "Pizza");
+        String job = prefs.getString("job", "Teacher");
 
-        promptText.setText("Generating AI memory prompt...");
+        int questionType = (int) (Math.random() * 4);
 
-        generatePrompt(familyName, hobby, team);
-    }
+        switch (questionType) {
 
-    private void generatePrompt(String family, String hobby, String team) {
+            case 0:
+                promptText.setText("What hobby do you enjoy?");
+                correctAnswer = hobby;
 
-        OkHttpClient client = new OkHttpClient.Builder()
-                .connectTimeout(30, java.util.concurrent.TimeUnit.SECONDS)
-                .readTimeout(60, java.util.concurrent.TimeUnit.SECONDS)
-                .writeTimeout(60, java.util.concurrent.TimeUnit.SECONDS)
-                .build();
+                optionOneButton.setText(hobby);
+                optionTwoButton.setText("Fishing");
+                optionThreeButton.setText("Cooking");
+                break;
 
-        try {
+            case 1:
+                promptText.setText("Which team do you support?");
+                correctAnswer = team;
 
-            JSONObject json = new JSONObject();
+                optionOneButton.setText("Lions");
+                optionTwoButton.setText(team);
+                optionThreeButton.setText("Bombers");
+                break;
 
-            json.put("model", "llama3.2:latest");
+            case 2:
+                promptText.setText("What is your favourite meal?");
+                correctAnswer = meal;
 
-            json.put("prompt",
-                    "Generate only one short dementia-friendly memory recall question. " +
-                            "Do not explain the question. Do not include extra commentary. " +
-                            "Use this information: Family member: " + family +
-                            ", Hobby: " + hobby +
-                            ", Favourite team: " + team);
+                optionOneButton.setText("Pasta");
+                optionTwoButton.setText("Salad");
+                optionThreeButton.setText(meal);
+                break;
 
-            json.put("stream", false);
+            case 3:
+                promptText.setText("What was your first job?");
+                correctAnswer = job;
 
-            RequestBody body = RequestBody.create(
-                    json.toString(),
-                    MediaType.parse("application/json")
-            );
-
-            Request request = new Request.Builder()
-                    .url("http://10.0.2.2:11434/api/generate")
-                    .post(body)
-                    .build();
-
-            client.newCall(request).enqueue(new Callback() {
-
-                @Override
-                public void onFailure(Call call, IOException e) {
-                    runOnUiThread(() ->
-                            promptText.setText("Connection failed: " + e.getMessage())
-                    );
-                }
-
-                @Override
-                public void onResponse(Call call, Response response) throws IOException {
-
-                    if (response.body() != null) {
-
-                        String responseBody = response.body().string();
-                        System.out.println(responseBody);
-
-                        try {
-
-                            JSONObject jsonResponse = new JSONObject(responseBody);
-
-                            String aiResponse = jsonResponse.getString("response");
-
-                            runOnUiThread(() ->
-                                    promptText.setText(aiResponse)
-                            );
-
-                        } catch (Exception e) {
-                            runOnUiThread(() ->
-                                    promptText.setText("Response parsing failed")
-                            );
-                        }
-                    }
-                }
-            });
-
-
-
-        } catch (Exception e) {
-            promptText.setText("Error generating prompt");
+                optionOneButton.setText(job);
+                optionTwoButton.setText("Chef");
+                optionThreeButton.setText("Driver");
+                break;
         }
 
+        optionOneButton.setOnClickListener(v -> checkAnswer(optionOneButton.getText().toString()));
 
+        optionTwoButton.setOnClickListener(v -> checkAnswer(optionTwoButton.getText().toString()));
+
+        optionThreeButton.setOnClickListener(v -> checkAnswer(optionThreeButton.getText().toString()));
     }
 
+    private void checkAnswer(String selectedAnswer) {
+
+        if (selectedAnswer.equals(correctAnswer)) {
+
+            feedbackText.setText("Great job. That is correct.");
+
+        } else {
+
+            feedbackText.setText("That’s okay. The correct answer is " + correctAnswer + ".");
+        }
+    }
 }

@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F7F4EF">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="24dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Memory Details"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            android:textColor="#2F3A35"
+            android:layout_marginBottom="8dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="These answers will be used to create personalised memory questions."
+            android:textSize="16sp"
+            android:textColor="#4F5D55"
+            android:layout_marginBottom="24dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Personal History"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="#2F3A35" />
+
+        <EditText
+            android:id="@+id/jobInput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="First job" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Family and Relationships"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="#2F3A35"
+            android:layout_marginTop="20dp" />
+
+        <EditText
+            android:id="@+id/familyInput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Important family member name" />
+
+        <EditText
+            android:id="@+id/relationshipInput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Relationship e.g. daughter" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Hobbies and Interests"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="#2F3A35"
+            android:layout_marginTop="20dp" />
+
+        <EditText
+            android:id="@+id/hobbyInput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Favourite hobby" />
+
+        <EditText
+            android:id="@+id/teamInput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Favourite team" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Food and Preferences"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="#2F3A35"
+            android:layout_marginTop="20dp" />
+
+        <EditText
+            android:id="@+id/mealInput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Favourite meal" />
+
+        <Button
+            android:id="@+id/saveMemoryDetailsButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Save Memory Details"
+            android:layout_marginTop="28dp" />
+
+    </LinearLayout>
+</ScrollView>

@@ -3,32 +3,48 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:gravity="center"
     android:padding="24dp"
+    android:gravity="center_horizontal"
     android:background="#F7F4EF">
 
     <TextView
+        android:id="@+id/titleText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Mynd"
         android:textSize="36sp"
         android:textStyle="bold"
         android:textColor="#2F3A35"
+        android:layout_marginTop="40dp"
         android:layout_marginBottom="12dp" />
 
     <TextView
-        android:layout_width="match_parent"
+        android:id="@+id/profileText"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Personalised memory support for early-stage dementia users."
-        android:textSize="18sp"
-        android:textAlignment="center"
+        android:text="No profile found"
+        android:textSize="20sp"
         android:textColor="#4F5D55"
         android:layout_marginBottom="32dp" />
 
     <Button
-        android:id="@+id/startButton"
+        android:id="@+id/createProfileButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Start Profile Setup" />
+        android:text="Create Patient Profile"
+        android:layout_marginBottom="16dp" />
+
+    <Button
+        android:id="@+id/startMemoryButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Begin Today's Session"
+        android:layout_marginBottom="16dp" />
+
+    <Button
+        android:id="@+id/editMemoryButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Edit Memory Details" />
 
 </LinearLayout>
