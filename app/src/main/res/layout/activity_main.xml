@@ -42,9 +42,18 @@
         android:layout_marginBottom="16dp" />
 
     <Button
+        android:id="@+id/diaryButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="View Diary"
+        android:layout_marginTop="16dp" />
+
+    <Button
         android:id="@+id/editMemoryButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Edit Memory Details" />
+
+
 
 </LinearLayout>

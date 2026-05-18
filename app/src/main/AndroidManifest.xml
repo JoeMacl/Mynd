@@ -19,6 +19,7 @@
         <activity android:name=".MemoryPromptActivity" />
         <activity android:name=".MemoryDetailsActivity" />
         <activity android:name=".MoodCheckInActivity" />
+        <activity android:name=".DiaryActivity" />
 
         <activity
             android:name=".MainActivity"

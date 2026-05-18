@@ -30,39 +30,28 @@
     <Button
         android:id="@+id/optionOneButton"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="90dp"
         android:text="Option 1"
-        android:layout_marginBottom="12dp" />
+        android:textSize="24sp"
+        android:layout_marginBottom="16dp" />
 
     <Button
         android:id="@+id/optionTwoButton"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="90dp"
         android:text="Option 2"
-        android:layout_marginBottom="12dp" />
+        android:textSize="24sp"
+        android:layout_marginBottom="16dp" />
 
     <Button
         android:id="@+id/optionThreeButton"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="90dp"
         android:text="Option 3"
+        android:textSize="24sp"
         android:layout_marginBottom="24dp" />
 
-    <TextView
-        android:id="@+id/feedbackText"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text=""
-        android:textSize="18sp"
-        android:textAlignment="center"
-        android:textColor="#4F5D55"
-        android:layout_marginBottom="24dp" />
 
-    <Button
-        android:id="@+id/nextQuestionButton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Next Question" />
 
     <Button
         android:id="@+id/homeButton"

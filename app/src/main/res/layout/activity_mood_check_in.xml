@@ -8,6 +8,7 @@
     android:background="#F7F4EF">
 
     <TextView
+        android:id="@+id/moodTitleText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="How are you feeling today?"
@@ -48,10 +49,5 @@
         android:textColor="#4F5D55"
         android:layout_marginBottom="24dp" />
 
-    <Button
-        android:id="@+id/continueButton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Continue to Memory Activity" />
 
 </LinearLayout>

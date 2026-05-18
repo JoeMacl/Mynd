@@ -10,7 +10,6 @@ import androidx.appcompat.app.AppCompatActivity;
 public class MemoryPromptActivity extends AppCompatActivity {
 
     private TextView promptText;
-    private TextView feedbackText;
 
     private Button optionOneButton;
     private Button optionTwoButton;
@@ -25,20 +24,14 @@ public class MemoryPromptActivity extends AppCompatActivity {
         setContentView(R.layout.activity_memory_prompt);
 
         promptText = findViewById(R.id.promptText);
-        feedbackText = findViewById(R.id.feedbackText);
 
         optionOneButton = findViewById(R.id.optionOneButton);
         optionTwoButton = findViewById(R.id.optionTwoButton);
         optionThreeButton = findViewById(R.id.optionThreeButton);
 
-        Button nextQuestionButton = findViewById(R.id.nextQuestionButton);
 
         loadQuestion();
 
-        nextQuestionButton.setOnClickListener(v -> {
-            feedbackText.setText("");
-            loadQuestion();
-        });
 
         Button homeButton = findViewById(R.id.homeButton);
 
@@ -97,22 +90,73 @@ public class MemoryPromptActivity extends AppCompatActivity {
                 break;
         }
 
-        optionOneButton.setOnClickListener(v -> checkAnswer(optionOneButton.getText().toString()));
+        optionOneButton.setOnClickListener(v ->
+                checkAnswer(optionOneButton.getText().toString())
+        );
 
-        optionTwoButton.setOnClickListener(v -> checkAnswer(optionTwoButton.getText().toString()));
+        optionTwoButton.setOnClickListener(v ->
+                checkAnswer(optionTwoButton.getText().toString())
+        );
 
-        optionThreeButton.setOnClickListener(v -> checkAnswer(optionThreeButton.getText().toString()));
+        optionThreeButton.setOnClickListener(v ->
+                checkAnswer(optionThreeButton.getText().toString())
+        );
+        
     }
 
     private void checkAnswer(String selectedAnswer) {
+        saveDiaryEntry(selectedAnswer);
 
-        if (selectedAnswer.equals(correctAnswer)) {
-
-            feedbackText.setText("Great job. That is correct.");
-
-        } else {
-
-            feedbackText.setText("That’s okay. The correct answer is " + correctAnswer + ".");
-        }
+        loadQuestion();
     }
+
+    private void saveDiaryEntry(String selectedAnswer) {
+
+        SharedPreferences prefs = getSharedPreferences("MyndProfile", MODE_PRIVATE);
+
+        String mood = prefs.getString("todayMood", "Not recorded");
+
+        String existingDiary = prefs.getString(
+                "diaryEntries",
+                ""
+        );
+
+        String result =
+                selectedAnswer.equals(correctAnswer)
+                        ? "Correct"
+                        : "Needs support";
+
+        String entry =
+                "Date: " +
+                        new java.text.SimpleDateFormat(
+                                "dd/MM/yyyy HH:mm",
+                                java.util.Locale.getDefault()
+                        ).format(new java.util.Date()) +
+                        "\n" +
+
+                        "Mood: " + mood + "\n" +
+
+                        "Question: " +
+                        promptText.getText().toString() + "\n" +
+
+                        "Answer given: " +
+                        selectedAnswer + "\n" +
+
+                        "Correct answer: " +
+                        correctAnswer + "\n" +
+
+                        "Result: " +
+                        result + "\n" +
+
+                        "-----------------------------\n\n";
+
+        prefs.edit()
+                .putString(
+                        "diaryEntries",
+                        entry + existingDiary
+                )
+                .apply();
+    }
+
+
 }

@@ -20,13 +20,20 @@ public class MainActivity extends AppCompatActivity {
         Button createProfileButton = findViewById(R.id.createProfileButton);
         Button startMemoryButton = findViewById(R.id.startMemoryButton);
         Button editMemoryButton = findViewById(R.id.editMemoryButton);
+        Button diaryButton = findViewById(R.id.diaryButton);
+
+        diaryButton.setOnClickListener(v -> {
+            Intent intent = new Intent(MainActivity.this, DiaryActivity.class);
+            startActivity(intent);
+        });
 
         SharedPreferences prefs = getSharedPreferences("MyndProfile", MODE_PRIVATE);
 
         String name = prefs.getString("name", "");
 
         if (!name.isEmpty()) {
-            profileText.setText("Current Patient: " + name);
+            profileText.setText("Hi, " + name);
+
         }
 
         createProfileButton.setOnClickListener(v -> {
